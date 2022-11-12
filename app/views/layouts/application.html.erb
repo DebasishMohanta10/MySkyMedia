@@ -11,6 +11,16 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <% if user_signed_in? %>
+      <%= link_to "Edit Account",edit_user_registration_path %>
+      <%= link_to "log out",destroy_user_session_path,method: :delete,data: {confirm: "Are you sure ?"} %>
+    <% else %>
+      <%= link_to "login",user_session_path %>
+      <%= link_to "sign up",destroy_user_session_path %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
